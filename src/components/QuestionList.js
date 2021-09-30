@@ -29,7 +29,7 @@ const [questions, setQuestions] = useState([])
     //console.log(event.target.parentNode.id) //whole list item
     console.log('id', question.id)
 
-    //delete fetch to get rid of this book
+    //delete fetch to get rid of this question
     fetch(`http://localhost:4000/questions/${question.id}`, {
       method: "DELETE",
     }) 
@@ -44,20 +44,12 @@ const [questions, setQuestions] = useState([])
     })
   }
 
-  function handleChangeItem (question) {
-    console.log('question answer changed', question)
-
-    //patch request to change the correctindex to the one that we chose in the drop down
-    
-  }
-
-
 
   return (
     <section>
       <h1>Quiz Questions</h1>
-      {console.log('questions from quetsionlist', questions)}
-      {questions.map(eachQuestion => <ul> <QuestionItem handleChangeItem={handleChangeItem} handleDeleteItem={handleDeleteItem} question={eachQuestion} key={eachQuestion.id} /> </ul> )}
+      {console.log('questions from questionlist', questions)}
+      {questions.map(eachQuestion => <ul> <QuestionItem handleDeleteItem={handleDeleteItem} question={eachQuestion} key={eachQuestion.id} /> </ul> )}
     </section>
   );
 }
